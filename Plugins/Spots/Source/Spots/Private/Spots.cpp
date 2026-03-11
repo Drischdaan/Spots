@@ -4,6 +4,8 @@
 
 #define LOCTEXT_NAMESPACE "FSpotsModule"
 
+DEFINE_LOG_CATEGORY(LogSpots);
+
 void FSpotsModule::StartupModule()
 {
 }

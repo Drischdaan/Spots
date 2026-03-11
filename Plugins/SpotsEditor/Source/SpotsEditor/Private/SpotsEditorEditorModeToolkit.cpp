@@ -5,6 +5,10 @@
 #include "EditorModeManager.h"
 #include "IDetailsView.h"
 #include "PropertyEditorModule.h"
+
+#include "Data/SpotsData.h"
+#include "Generator/SpotsGenerator.h"
+
 #include "Modules/ModuleManager.h"
 
 #define LOCTEXT_NAMESPACE "SpotsEditorEditorModeToolkit"
@@ -23,6 +27,40 @@ void FSpotsEditorEditorModeToolkit::GetToolPaletteNames(TArray<FName>& PaletteNa
 	PaletteNames.Add(NAME_Default);
 }
 
+TSharedPtr<SWidget> FSpotsEditorEditorModeToolkit::GetInlineContent() const
+{
+	return SNew(SVerticalBox)
+		+ SVerticalBox::Slot().AutoHeight().Padding(4.0f)
+		[
+			SNew(SButton)
+			.Text(LOCTEXT("GenerateSpots", "Generate Spots"))
+			.HAlign(HAlign_Center)
+			.OnClicked_Lambda([this]()
+			{
+				UWorld* World = GEditor->GetEditorWorldContext().World();
+				const TMap<FName, TArray<FSpotsData>> VolumeData = FSpotsGenerator::GenerateSpots(World);
+				FSpotsGenerator::SaveToDataTables(World, VolumeData);
+
+				USpotsEditorEditorMode* Mode = Cast<USpotsEditorEditorMode>(
+					GLevelEditorModeTools().GetActiveScriptableMode(
+						USpotsEditorEditorMode::EM_SpotsEditorEditorModeId));
+				if (Mode)
+				{
+					Mode->SetPreviewData(VolumeData);
+				}
+				return FReply::Handled();
+			})
+		]
+		+ SVerticalBox::Slot()
+		.AutoHeight()
+		[
+			ModeDetailsView.ToSharedRef()
+		]
+		+ SVerticalBox::Slot()
+		[
+			DetailsView.ToSharedRef()
+		];
+}
 
 FName FSpotsEditorEditorModeToolkit::GetToolkitFName() const
 {

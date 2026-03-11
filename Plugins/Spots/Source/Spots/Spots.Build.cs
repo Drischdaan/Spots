@@ -12,6 +12,7 @@ public class Spots : ModuleRules
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
 			"Core",
+			"GameplayTags",
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]

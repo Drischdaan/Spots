@@ -12,10 +12,13 @@ public class SpotsEditor : ModuleRules
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
 			"Core",
+			"Spots",
+			"GameplayTags",
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
+			"AssetRegistry",
 			"CoreUObject",
 			"Engine",
 			"Slate",
@@ -27,6 +30,8 @@ public class SpotsEditor : ModuleRules
 			"LevelEditor",
 			"InteractiveToolsFramework",
 			"EditorInteractiveToolsFramework",
+			"Navmesh",
+			"NavigationSystem",
 		});
 	}
 }

@@ -1,0 +1,32 @@
+﻿// Copyright Drischdaan All Rights Reserved Copyright
+
+using UnrealBuildTool;
+
+public class SpotsEditor : ModuleRules
+{
+	public SpotsEditor(ReadOnlyTargetRules target)
+		: base(target)
+	{
+		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+
+		PublicDependencyModuleNames.AddRange(new string[]
+		{
+			"Core",
+		});
+
+		PrivateDependencyModuleNames.AddRange(new string[]
+		{
+			"CoreUObject",
+			"Engine",
+			"Slate",
+			"SlateCore",
+			"InputCore",
+			"EditorFramework",
+			"EditorStyle",
+			"UnrealEd",
+			"LevelEditor",
+			"InteractiveToolsFramework",
+			"EditorInteractiveToolsFramework",
+		});
+	}
+}

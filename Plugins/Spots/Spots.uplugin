@@ -1,0 +1,23 @@
+﻿{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Spots",
+	"Description": "",
+	"Category": "Other",
+	"CreatedBy": "Drischdaan",
+	"CreatedByURL": "https://drischdaan.dev",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "Spots",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
